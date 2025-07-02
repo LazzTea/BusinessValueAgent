@@ -3,7 +3,6 @@ import yfinance as yf
 
 @tool
 def get_financial_data(ticker: str) -> dict:
-    """Fetch basic financial ratios for a given ticker"""
     info = yf.Ticker(ticker).info
     return {
         "pe_ratio": info.get("trailingPE"),
@@ -16,7 +15,6 @@ def get_financial_data(ticker: str) -> dict:
 
 @tool
 def is_undervalued(financial_data: dict) -> str:
-    """Use the ML model to assess if the stock is undervalued"""
     # Assuming you’ve loaded a model previously
     X = [[
         financial_data['pe_ratio'],
